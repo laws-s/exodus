@@ -11718,7 +11718,10 @@ _VIEWER_DL_JS +
                             b.classList.toggle('active', b.dataset.engine === selectedEngine);
                         });
                     }
-                    await initCache();
+                    await initCache().catch(() => {
+                        cacheDB = null;
+                        log("Cache unavailable (IndexedDB blocked in this context — running without cache)", "warn");
+                    });
                     log("Cache initialized", "info");
 
                     try {
