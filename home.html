@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Exodus | made by Laws. don't skid the code or at least credit me. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -1184,7 +1185,7 @@
       <p class="info-kicker">Credits</p>
       <div class="credit-list">
         <div class="credit-card">
-          <div><p class="credit-name">Kingtian20</p><p class="credit-detail">Original creator &amp; founder of GX Verse (predecessor) · games library</p></div>
+          <div><p class="credit-name">Kingtian20</p><p class="credit-detail">Original creator of GX Verse, the site Exodus is based on · games library</p></div>
           <span class="credit-tag">Founder</span>
         </div>
         <div class="credit-card">
@@ -1668,7 +1669,7 @@ for i in range(5):
   </div>
 </footer>
 
-<!-- OLD NAV  -->
+<!-- OLD NAV (preserved for JS compatibility) -->
 <nav class="nav" id="main-nav" style="display:none;">
   <button class="nav-btn" id="btn-home" title="Home"><i class="fa-solid fa-house"></i></button>
   <div class="nav-sep"></div>
@@ -1749,15 +1750,15 @@ const IMG = "https://raw.githubusercontent.com/Kingtian20/search-embeds/images";
 const NOAH = "https://raw.githubusercontent.com/NoahsAmazingTutoringHelp/Noahs-Calculus-Tutor/refs/heads/master/games";
 const NOAH_IMG = "https://raw.githubusercontent.com/NoahsAmazingTutoringHelp/Noahs-Calculus-Tutor/refs/heads/master/images";
 
-//  real implementations are in the canvas script block below
+// stubs — real implementations are in the canvas script block below
 // defined here so applyBackground/applyAccent can call them safely on startup
 let startCanvas = () => {};
 let stopCanvas = () => {};
 
 // ── GAMES LIST ────────────────────────────────────────────────────────────────
-// gx verse games use cdn/code/webgl and noahs games use url
+// GX Verse originals use cdn/code/webgl pattern; Noah's games use url pattern
 const gamesList = [
-  // ── GX GAMES  ──
+  // ── EXODUS ORIGINALS ──
   { title: "1v1 Lol",                          image: `${IMG}/147.png`,  cdn: `${CDN}/1v1lol/1v1lol.xml`,                                                                        webgl: true  },
   { title: "1v1 Soccer",                       image: `${IMG}/2.png`,    cdn: `${CDN}/1v1soccer/1v1soccer.xml`,        code: `${CDN}/1v1soccer/loader.html`,                      webgl: true  },
   { title: "1v1 Tennis",                       image: `${IMG}/1.png`,    cdn: `${CDN}/1v1tennis/1v1tennis.xml`,                                                                   webgl: false },
@@ -1814,7 +1815,7 @@ const gamesList = [
   { title: "Undertale Yellow",                 image: `${IMG}/131.png`,  cdn: `${CDN}/undertaleyellow/undertaleyellow.xml`, code: `${CDN}/undertaleyellow/loader.html`,            webgl: true  },
   { title: "Wrestle Bros",                     image: `${IMG}/139.png`,  cdn: `${CDN}/wrestlebros/wrestlebros.xml`,                                                               webgl: false },
 
-  // ── NOAHS GAMES ──
+  // ── NOAH'S GAMES ──
   { title: "I Have No Mouth, and I Must Scream", image: `${NOAH_IMG}/413.jpg`, url: `${NOAH}/413.html` },
   { title: "CheeseRoll",               image: `${NOAH_IMG}/414.jpg`,  url: `${NOAH}/414.html` },
   { title: "Eggy Car",                 image: `${NOAH_IMG}/415.jpg`,  url: `${NOAH}/415.html` },
@@ -2179,7 +2180,7 @@ const gamesList = [
   { title: "Five Nights at Epstein",   image: null, url: `${NOAH}/2019.html`, secret: true },
 ];
 
-// deduplicate by normalized title, keeping first occurrence
+// Deduplicate by normalized title, keeping first occurrence
 const seenTitles = new Set();
 const dedupedGames = gamesList.filter(g => {
   const key = g.title.toLowerCase().replace(/[^a-z0-9]/g, "");
