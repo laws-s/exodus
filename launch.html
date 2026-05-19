@@ -13,14 +13,13 @@
       overflow: hidden; font-family: "Inter", sans-serif; color: #fff;
     }
     #bg-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-
     .screen {
       position: fixed; inset: 0; display: none; flex-direction: column;
       align-items: center; justify-content: center; z-index: 10; gap: 20px;
     }
     .screen.active { display: flex; }
 
-    /* ── LOADING ── */
+    /* Loading */
     #loading-logo {
       font-family: "Orbitron", sans-serif; font-size: clamp(2rem,6vw,3.5rem);
       font-weight: 900; letter-spacing: 0.2em;
@@ -32,13 +31,10 @@
       border-top-color: var(--accent); border-radius: 50%;
       animation: spin 0.8s linear infinite; box-shadow: 0 0 12px rgba(0,255,247,0.3);
     }
-    #loading-status {
-      font-size: 0.7rem; letter-spacing: 3px; color: rgba(255,255,255,0.3);
-      text-transform: uppercase; font-weight: 300;
-    }
+    #loading-status { font-size: 0.7rem; letter-spacing: 3px; color: rgba(255,255,255,0.3); text-transform: uppercase; font-weight: 300; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── LAUNCH BUTTON (shown after load) ── */
+    /* Launch button */
     #screen-ready { gap: 24px; text-align: center; }
     #ready-logo {
       font-family: "Orbitron", sans-serif; font-size: clamp(2rem,6vw,3.5rem);
@@ -46,28 +42,19 @@
       background: linear-gradient(135deg, #e8f4ff 0%, #b8d8f0 50%, var(--accent) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    #ready-sub {
-      font-size: 0.72rem; letter-spacing: 4px; color: rgba(255,255,255,0.25);
-      font-weight: 300; text-transform: uppercase; margin-top: -8px;
-    }
+    #ready-version { font-size: 0.65rem; letter-spacing: 3px; color: rgba(255,255,255,0.2); font-weight: 300; margin-top: -10px; }
     #launch-btn {
-      margin-top: 12px; padding: 14px 44px;
-      background: rgba(0,255,247,0.1); border: 1px solid rgba(0,255,247,0.35);
+      margin-top: 8px; padding: 14px 48px;
+      background: rgba(0,255,247,0.08); border: 1px solid rgba(0,255,247,0.3);
       border-radius: 100px; color: var(--accent);
       font-family: "Orbitron", sans-serif; font-size: 0.72rem; letter-spacing: 3px;
       cursor: pointer; transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-      box-shadow: 0 0 20px rgba(0,255,247,0.15);
+      box-shadow: 0 0 20px rgba(0,255,247,0.12);
     }
-    #launch-btn:hover {
-      background: rgba(0,255,247,0.18); box-shadow: 0 0 36px rgba(0,255,247,0.35);
-      transform: scale(1.04);
-    }
-    #popup-hint {
-      font-size: 0.65rem; color: rgba(255,255,255,0.18);
-      letter-spacing: 1px; margin-top: -8px;
-    }
+    #launch-btn:hover { background: rgba(0,255,247,0.16); box-shadow: 0 0 36px rgba(0,255,247,0.3); transform: scale(1.04); }
+    #launch-hint { font-size: 0.62rem; color: rgba(255,255,255,0.15); letter-spacing: 1px; }
 
-    /* ── UPDATE ── */
+    /* Update */
     #screen-update { background: rgba(3,5,8,0.97); }
     #update-box {
       background: rgba(12,16,26,0.95); border: 1px solid rgba(239,68,68,0.35);
@@ -75,10 +62,7 @@
       text-align: center; box-shadow: 0 0 60px rgba(239,68,68,0.08), 0 24px 64px rgba(0,0,0,0.8);
     }
     #update-icon { font-size: 2.6rem; margin-bottom: 18px; display: block; }
-    #update-title {
-      font-family: "Orbitron", sans-serif; font-size: 0.95rem;
-      letter-spacing: 3px; color: #ef4444; margin-bottom: 14px;
-    }
+    #update-title { font-family: "Orbitron", sans-serif; font-size: 0.95rem; letter-spacing: 3px; color: #ef4444; margin-bottom: 14px; }
     #update-body { font-size: 0.86rem; line-height: 1.85; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
     #update-versions { font-size: 0.68rem; color: rgba(255,255,255,0.18); margin-bottom: 32px; letter-spacing: 1px; }
     #update-btn {
@@ -92,222 +76,157 @@
     #update-divider { width: 48px; height: 1px; background: rgba(239,68,68,0.2); margin: 28px auto; }
     #update-note { font-size: 0.65rem; color: rgba(255,255,255,0.16); line-height: 1.9; }
 
-    /* ── ERROR ── */
-    #screen-error { text-align: center; gap: 14px; }
-    #error-icon { font-size: 2.2rem; opacity: 0.35; }
-    #error-title { font-family: "Orbitron", sans-serif; font-size: 0.78rem; letter-spacing: 3px; color: rgba(255,255,255,0.45); }
-    #error-msg { font-size: 0.76rem; color: rgba(255,255,255,0.28); max-width: 340px; line-height: 1.75; }
-    #error-retry {
-      margin-top: 4px; padding: 10px 28px; background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; color: rgba(255,255,255,0.6);
-      cursor: pointer; font-size: 0.78rem; transition: background 0.15s, color 0.15s;
-    }
-    #error-retry:hover { background: rgba(255,255,255,0.1); color: #fff; }
-
-    /* ── POPUP BLOCKED ── */
+    /* Popup blocked */
     #screen-popup { text-align: center; gap: 14px; }
-    #popup-title { font-family: "Orbitron", sans-serif; font-size: 0.82rem; letter-spacing: 3px; color: rgba(255,255,255,0.5); }
-    #popup-msg { font-size: 0.78rem; color: rgba(255,255,255,0.28); max-width: 360px; line-height: 1.75; }
+    #popup-title { font-family: "Orbitron", sans-serif; font-size: 0.8rem; letter-spacing: 3px; color: rgba(255,255,255,0.45); }
+    #popup-msg { font-size: 0.76rem; color: rgba(255,255,255,0.28); max-width: 360px; line-height: 1.8; }
     #popup-retry {
-      margin-top: 4px; padding: 10px 28px; background: rgba(0,255,247,0.08);
-      border: 1px solid rgba(0,255,247,0.25); border-radius: 100px; color: var(--accent);
+      margin-top: 4px; padding: 10px 28px; background: rgba(0,255,247,0.07);
+      border: 1px solid rgba(0,255,247,0.22); border-radius: 100px; color: var(--accent);
       cursor: pointer; font-size: 0.78rem; transition: background 0.15s;
     }
-    #popup-retry:hover { background: rgba(0,255,247,0.15); }
+    #popup-retry:hover { background: rgba(0,255,247,0.14); }
   </style>
 </head>
 <body>
 
 <canvas id="bg-canvas"></canvas>
 
-<!-- LOADING -->
 <div class="screen active" id="screen-loading">
   <div id="loading-logo">EXODUS</div>
   <div id="loading-spinner"></div>
   <div id="loading-status">Checking version...</div>
 </div>
 
-<!-- READY TO LAUNCH -->
 <div class="screen" id="screen-ready">
   <div id="ready-logo">EXODUS</div>
-  <div id="ready-sub">Ready</div>
+  <div id="ready-version" id="ready-version"></div>
   <button id="launch-btn">LAUNCH</button>
-  <div id="popup-hint">Opens in a new tab — allow pop-ups if prompted</div>
+  <div id="launch-hint">Opens in a new tab &mdash; allow pop-ups if prompted</div>
 </div>
 
-<!-- UPDATE REQUIRED -->
 <div class="screen" id="screen-update">
   <div id="update-box">
     <span id="update-icon">&#9888;&#65039;</span>
     <div id="update-title">Launcher Update Required</div>
-    <p id="update-body">
-      You're running an outdated version of the Exodus launcher.
-      Download the latest version below — it only takes a second.
-    </p>
+    <p id="update-body">You're running an outdated version of the Exodus launcher. Download the latest version below — it only takes a second.</p>
     <div id="update-versions"></div>
-    <a id="update-btn" href="https://cdn.jsdelivr.net/gh/laws-s/exodus@main/launch.html" download="launch.html">
-      &#11015;&nbsp; Download Latest Launcher
-    </a>
+    <a id="update-btn" href="https://cdn.jsdelivr.net/gh/laws-s/exodus@main/launch.html" download="launch.html">&#11015;&nbsp; Download Latest Launcher</a>
     <div id="update-divider"></div>
-    <div id="update-note">
-      Save the downloaded file and open it to continue.<br>
-      You only need to do this when the launcher itself changes —<br>
-      Exodus itself updates automatically every time you open it.
-    </div>
+    <div id="update-note">Save the downloaded file and open it to continue.<br>You only need to do this when the launcher itself changes —<br>Exodus itself updates automatically every time you open it.</div>
   </div>
 </div>
 
-<!-- ERROR -->
-<div class="screen" id="screen-error">
-  <div id="error-icon">&#9889;</div>
-  <div id="error-title">Could Not Load</div>
-  <div id="error-msg">Exodus couldn't be reached. Check your connection and try again.</div>
-  <button id="error-retry">Try Again</button>
-</div>
-
-<!-- POPUP BLOCKED -->
 <div class="screen" id="screen-popup">
-  <div id="error-icon" style="font-size:2.2rem;opacity:0.35;">&#128683;</div>
+  <div style="font-size:2rem;opacity:0.3;">&#128683;</div>
   <div id="popup-title">Pop-up Blocked</div>
-  <div id="popup-msg">
-    Your browser blocked the Exodus window. Click the button below to try again,
-    or allow pop-ups for this page in your browser settings.
-  </div>
+  <div id="popup-msg">Your browser blocked the Exodus window.<br>Click below to try again, or allow pop-ups for this page in your browser settings first.</div>
   <button id="popup-retry">Try Again</button>
 </div>
 
 <script>
-// ── CONFIG ────────────────────────────────────────────────────────────────────
 const LAUNCHER_VERSION = 1;
 const BASE = "https://cdn.jsdelivr.net/gh/laws-s/exodus@main";
-const APP_URL = BASE + "/home.html";
-const VERSION_JS_URL = BASE + "/version.js";
+let appVersion = "";
 
-let cachedHtml = null;
-let appVersion = "?";
-
-// ── BACKGROUND STARS ──────────────────────────────────────────────────────────
+// ── STARS ─────────────────────────────────────────────────────────────────────
 (function() {
-  const canvas = document.getElementById("bg-canvas");
-  const ctx = canvas.getContext("2d");
-  let stars = [];
+  const cv = document.getElementById("bg-canvas");
+  const cx = cv.getContext("2d");
+  let s = [];
   function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    stars = Array.from({ length: 130 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.4 + 0.3,
-      phase: Math.random() * Math.PI * 2,
-      speed: 0.004 + Math.random() * 0.01,
-      a: Math.random() * 0.7 + 0.2,
-    }));
+    cv.width = window.innerWidth; cv.height = window.innerHeight;
+    s = Array.from({length:130},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.3+0.3,ph:Math.random()*Math.PI*2,sp:0.004+Math.random()*0.01,a:Math.random()*0.7+0.2}));
   }
-  resize();
-  window.addEventListener("resize", resize);
-  (function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    stars.forEach(s => {
-      s.phase += s.speed;
-      const alpha = s.a * (0.3 + (Math.sin(s.phase) + 1) / 3.2);
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(0,255,247," + alpha + ")";
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  })();
+  resize(); window.addEventListener("resize",resize);
+  (function draw(){cx.clearRect(0,0,cv.width,cv.height);s.forEach(p=>{p.ph+=p.sp;cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle="rgba(0,255,247,"+(p.a*(0.3+(Math.sin(p.ph)+1)/3.2))+")";cx.fill();});requestAnimationFrame(draw);})();
 })();
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
-function show(id) {
-  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-function setStatus(msg) {
-  document.getElementById("loading-status").textContent = msg;
-}
-function showError(msg) {
-  document.getElementById("error-msg").textContent = msg;
-  show("screen-error");
-}
+function show(id) { document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active")); document.getElementById(id).classList.add("active"); }
+function setStatus(msg) { document.getElementById("loading-status").textContent = msg; }
 
-// ── LAUNCH into new window via document.write ─────────────────────────────────
-function launchApp() {
-  if (!cachedHtml) { showError("App not loaded yet. Try again."); return; }
-  const win = window.open("about:blank", "_blank");
-  if (!win) { show("screen-popup"); return; }
-  win.document.open();
-  win.document.write(cachedHtml);
-  win.document.close();
-  // request fullscreen after brief delay
-  setTimeout(() => {
-    try {
-      const de = win.document.documentElement;
-      const fs = de.requestFullscreen || de.webkitRequestFullscreen || de.mozRequestFullScreen || de.msRequestFullscreen;
-      if (fs) fs.call(de);
-    } catch(e) {}
-  }, 600);
-}
-
-// ── VERSION CHECK via <script> tag ────────────────────────────────────────────
+// ── VERSION CHECK ─────────────────────────────────────────────────────────────
 function checkVersion(onDone) {
-  const script = document.createElement("script");
-  script.src = VERSION_JS_URL + "?t=" + Date.now();
-  script.onload = function() {
+  const s = document.createElement("script");
+  s.src = BASE + "/version.js?t=" + Date.now();
+  s.onload = function() {
     const v = window.__EXODUS_VERSION__;
     if (v) {
-      appVersion = v.app || "?";
-      const minLauncher = parseInt(v.min_launcher || "1", 10);
-      if (LAUNCHER_VERSION < minLauncher) {
+      appVersion = v.app || "";
+      const min = parseInt(v.min_launcher || "1", 10);
+      if (LAUNCHER_VERSION < min) {
         document.getElementById("update-versions").textContent =
-          "Your launcher: v" + LAUNCHER_VERSION +
-          "  ·  Required: v" + minLauncher +
-          "  ·  Exodus: v" + appVersion;
+          "Your launcher: v" + LAUNCHER_VERSION + "  ·  Required: v" + min + "  ·  Exodus: v" + appVersion;
         show("screen-update");
         return;
       }
     }
     onDone();
   };
-  script.onerror = function() {
-    // Can't reach version.js — skip check, proceed
-    onDone();
-  };
-  document.head.appendChild(script);
+  s.onerror = function() { onDone(); }; // unreachable — skip check
+  document.head.appendChild(s);
 }
 
-// ── FETCH APP HTML via fetch() ────────────────────────────────────────────────
-// fetch() works here because we're doing document.write into a new window,
-// not injecting into the current page, so CORS only needs to allow the read.
-// jsDelivr does set Access-Control-Allow-Origin: * on responses, so fetch works —
-// the earlier CORS error was from a different context.
-async function fetchApp() {
-  setStatus("Loading Exodus" + (appVersion !== "?" ? " v" + appVersion : "") + "...");
+// ── LAUNCH ────────────────────────────────────────────────────────────────────
+// Open the window first (must be from a user gesture or synchronous with one),
+// then fetch the HTML inside it — avoids all CORS/CSP issues from file:// context
+async function launch() {
+  const win = window.open("about:blank", "_blank");
+  if (!win) { show("screen-popup"); return; }
+
+  // Show a loading state in the new window while we fetch
+  win.document.write(`<!doctype html><html><head><meta charset="UTF-8">
+    <style>
+      body{margin:0;background:#030508;display:flex;flex-direction:column;align-items:center;
+        justify-content:center;height:100vh;font-family:'Segoe UI',sans-serif;color:rgba(255,255,255,0.3);}
+      .sp{width:36px;height:36px;border:2px solid rgba(255,255,255,0.07);border-top-color:#00fff7;
+        border-radius:50%;animation:sp .8s linear infinite;margin-bottom:16px;}
+      @keyframes sp{to{transform:rotate(360deg)}}
+      p{font-size:.7rem;letter-spacing:3px;text-transform:uppercase}
+    </style></head><body><div class="sp"></div><p>Loading Exodus...</p></body></html>`);
+
   try {
-    const res = await fetch(APP_URL + "?t=" + Date.now());
+    const res = await fetch(BASE + "/home.html?t=" + Date.now());
     if (!res.ok) throw new Error("HTTP " + res.status);
-    cachedHtml = await res.text();
-    setStatus("Ready");
-    show("screen-ready");
+    const html = await res.text();
+    win.document.open();
+    win.document.write(html);
+    win.document.close();
+    setTimeout(() => {
+      try {
+        const de = win.document.documentElement;
+        const fs = de.requestFullscreen || de.webkitRequestFullscreen || de.mozRequestFullScreen || de.msRequestFullscreen;
+        if (fs) fs.call(de);
+      } catch(e) {}
+    }, 600);
   } catch(err) {
-    showError("Couldn't fetch Exodus (" + err.message + "). Check your connection.");
+    win.document.open();
+    win.document.write(`<!doctype html><html><head><meta charset="UTF-8">
+      <style>body{margin:0;background:#030508;display:flex;flex-direction:column;align-items:center;
+        justify-content:center;height:100vh;font-family:'Segoe UI',sans-serif;color:rgba(255,255,255,0.4);text-align:center;gap:12px;}
+        h2{font-size:.85rem;letter-spacing:3px;color:rgba(255,255,255,0.5)}
+        p{font-size:.75rem;max-width:320px;line-height:1.7;color:rgba(255,255,255,0.25)}</style></head>
+      <body><h2>LOAD FAILED</h2><p>Couldn't reach Exodus. Close this window, check your connection, and try again.</p></body></html>`);
+    win.document.close();
   }
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
-async function init() {
+function init() {
   show("screen-loading");
   setStatus("Checking version...");
-  await new Promise(resolve => checkVersion(resolve));
-  // if update screen was shown, stop here
-  if (document.getElementById("screen-update").classList.contains("active")) return;
-  await fetchApp();
+  checkVersion(function() {
+    if (document.getElementById("screen-update").classList.contains("active")) return;
+    const vEl = document.getElementById("ready-version");
+    if (vEl) vEl.textContent = appVersion ? "v" + appVersion : "";
+    setStatus("Ready");
+    show("screen-ready");
+  });
 }
 
-document.getElementById("launch-btn").addEventListener("click", launchApp);
-document.getElementById("popup-retry").addEventListener("click", launchApp);
-document.getElementById("error-retry").addEventListener("click", init);
+document.getElementById("launch-btn").addEventListener("click", launch);
+document.getElementById("popup-retry").addEventListener("click", launch);
 
 init();
 </script>
