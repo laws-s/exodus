@@ -266,16 +266,18 @@ async function launch() {
     const res = await fetch(BASE + "/home.html?t=" + Date.now());
     if (!res.ok) throw new Error("HTTP " + res.status);
     const html = await res.text();
-    win.document.open();
-    win.document.write(html);
-    win.document.close();
+    const blob = new Blob([html], { type: "text/html" });
+    const blobUrl = URL.createObjectURL(blob);
+    win.location.href = blobUrl;
+    // clean up blob URL after page loads
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
     setTimeout(() => {
       try {
         const de = win.document.documentElement;
         const fs = de.requestFullscreen || de.webkitRequestFullscreen || de.mozRequestFullScreen || de.msRequestFullscreen;
         if (fs) fs.call(de);
       } catch(e) {}
-    }, 600);
+    }, 1200);
   } catch(err) {
     win.document.open();
     win.document.write(`<!doctype html><html><head><meta charset="UTF-8">
