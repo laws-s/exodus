@@ -1411,6 +1411,7 @@
       cursor:pointer;display:flex;align-items:center;justify-content:center;
       flex-shrink:0;transition:opacity 0.2s,transform 0.1s;
     }
+    #gxai-send svg { width:16px;height:16px;flex-shrink:0; }
     #gxai-send:hover:not(:disabled) { transform:scale(1.05); }
     #exodus-hint {
       text-align:center;font-size:0.6rem;color:var(--text-dim);
@@ -2997,7 +2998,9 @@ document.getElementById("shortcuts-panel").addEventListener("click", e => {
 // ── BATTERY WIDGET ─────────────────────────────────────────────────────────────
 async function initBattery() {
   if (!navigator.getBattery) return;
-  const battery = await navigator.getBattery();
+  let battery;
+  try { battery = await navigator.getBattery(); } catch(e) { return; }
+  if (!battery) return;
   const wrap = document.getElementById("status-battery-wrap");
   const text = document.getElementById("status-battery");
   const icon = document.getElementById("status-battery-icon");
@@ -3061,7 +3064,7 @@ document.addEventListener("keydown", e => {
   const overlay = document.getElementById("game-overlay");
   if (e.key === "Escape" && overlay.classList.contains("active")) { e.preventDefault(); closeGame(); return; }
   if (e.key === "Escape") { closeShortcuts(); return; }
-  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.isContentEditable) return;
   if (e.key === "?") { e.preventDefault(); openShortcuts(); return; }
   if (e.ctrlKey || e.metaKey || e.altKey) return;
   if (e.key === "/") {
