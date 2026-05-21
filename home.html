@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://kit.fontawesome.com/48def32dfd.js" crossorigin="anonymous"></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <title>Exodus</title>
   <style>
@@ -215,11 +215,12 @@
       background: rgba(var(--accent-rgb), 0.1);
       transform: translateY(-2px);
     }
-    .quick-action-btn i {
-      font-size: 1.5rem; color: var(--text-dim);
+    .quick-action-btn i, .quick-action-btn svg {
+      font-size: 1.5rem; width: 1.5rem; height: 1.5rem;
+      color: rgba(255,255,255,0.5);
       transition: color 0.2s ease;
     }
-    .quick-action-btn:hover i {
+    .quick-action-btn:hover i, .quick-action-btn:hover svg {
       color: var(--accent);
     }
     .quick-action-btn span {
@@ -346,6 +347,18 @@
       color: var(--text-dim);
     }
 
+
+    /* Inline SVG icons */
+    svg { display: inline-block; vertical-align: -0.125em; }
+    .sidebar-btn svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+    .nav-btn svg { width: 1rem; height: 1rem; }
+    .game-controls button svg { width: 1rem; height: 1rem; }
+    .ctx-item svg { width: 0.85rem; height: 0.85rem; }
+    svg.search-icon { width: 0.85rem; height: 0.85rem; }
+    svg.stat-icon { width: 1.5rem; height: 1.5rem; }
+    .quick-action-btn svg { width: 1.1rem; height: 1.1rem; }
+    button svg { width: 1em; height: 1em; }
+
     /* ── SIDEBAR ── */
     .sidebar {
       position: fixed; left: 0; top: 38px; bottom: 0; width: 56px;
@@ -358,8 +371,9 @@
       width: 40px; height: 40px; border: none; border-radius: 8px;
       background: transparent; color: rgba(255,255,255,0.45); font-size: 1rem;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s ease;
+      transition: all 0.2s ease; overflow: visible; flex-shrink: 0;
     }
+    .sidebar-btn svg { width: 1rem; height: 1rem; flex-shrink: 0; }
     .sidebar-btn:hover, .sidebar-btn.active {
       color: var(--accent); background: rgba(var(--accent-rgb), 0.1);
     }
@@ -974,21 +988,21 @@
   <!-- Stats -->
   <div class="home-stats">
     <div class="stat-card">
-      <i class="fa-solid fa-gamepad stat-icon"></i>
+      <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M192 64C86 64 0 150 0 256S86 448 192 448H320 448c106 0 192-86 192-192s-86-192-192-192H320 192zM496 168a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm-24 96a24 24 0 1 1 48 0 24 24 0 1 1-48 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg>
       <div class="stat-info">
         <span class="stat-value" id="stat-games">0</span>
         <span class="stat-label">Games</span>
       </div>
     </div>
     <div class="stat-card">
-      <i class="fa-solid fa-cloud stat-icon"></i>
+      <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 336c0 79.5 64.5 144 144 144H432c79.5 0 144-64.5 144-144c0-68.8-48.2-126.6-112.7-141c-.2-2.3-.3-4.7-.3-7c0-79.5-64.5-144-144-144c-46.3 0-87.6 21.8-114.6 56c-9.8-3.2-20.2-5-31-5C76.5 96 0 172.5 0 264c0 27.3 6.4 53 17.8 75.7L0 336z"/></svg>
       <div class="stat-info">
         <span class="stat-value" id="stat-proxies">0</span>
         <span class="stat-label">Proxies</span>
       </div>
     </div>
     <div class="stat-card">
-      <i class="fa-solid fa-music stat-icon"></i>
+      <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7V168c0 22.1-17.9 40-40 40H448 388.6L288 209.7V360.4c0 0 0 0 0 .6c0 27.7-9.8 53-26 72.9c-16.3 19.9-39.3 34.4-65.5 38.4c-12.5 1.9-25.3 1.8-38-.9C122.9 465.8 96 437 96 408V400c0-22.1 17.9-40 40-40h68.3c9.7 0 17.7-7.9 17.7-17.7V132.4c0-20.2 13.4-38 32.8-43.4l208-60c12.7-3.7 26.4-1 36.3 7.3z"/></svg>
       <div class="stat-info">
         <span class="stat-value" id="stat-sounds">0</span>
         <span class="stat-label">Sounds</span>
@@ -999,19 +1013,19 @@
   <!-- Quick Actions -->
   <div class="home-quick-actions">
     <button class="quick-action-btn" onclick="switchPage('gxmes')">
-      <i class="fa-solid fa-gamepad"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M192 64C86 64 0 150 0 256S86 448 192 448H320 448c106 0 192-86 192-192s-86-192-192-192H320 192zM496 168a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm-24 96a24 24 0 1 1 48 0 24 24 0 1 1-48 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg>
       <span>Games</span>
     </button>
     <button class="quick-action-btn" onclick="switchPage('proxy')">
-      <i class="fa-solid fa-cloud"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 336c0 79.5 64.5 144 144 144H432c79.5 0 144-64.5 144-144c0-68.8-48.2-126.6-112.7-141c-.2-2.3-.3-4.7-.3-7c0-79.5-64.5-144-144-144c-46.3 0-87.6 21.8-114.6 56c-9.8-3.2-20.2-5-31-5C76.5 96 0 172.5 0 264c0 27.3 6.4 53 17.8 75.7L0 336z"/></svg>
       <span>Proxies</span>
     </button>
     <button class="quick-action-btn" onclick="switchPage('soundboard')">
-      <i class="fa-solid fa-volume-high"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M533.6 32.5C598.5 85.2 640 165.8 640 256s-41.5 170.7-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 330.9 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C495.3 341.3 512 301.1 512 256s-16.7-85.3-39.2-102.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.7 34.4-5.3z"/></svg>
       <span>Soundboard</span>
     </button>
     <button class="quick-action-btn" onclick="switchPage('gxai')">
-      <i class="fa-solid fa-robot"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg>
       <span>AI Chat</span>
     </button>
   </div>
@@ -1021,14 +1035,14 @@
     <div class="home-search search-box">
       <div class="spin-border"></div>
       <input type="text" id="home-search-input" placeholder="Search gxmes..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus />
-      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
     </div>
   </div>
 
   <!-- Favorites -->
   <div id="fav-section">
     <div class="recent-header">
-      <div class="recent-label"><i class="fa-solid fa-star" style="color:#f59e0b;font-size:0.7rem;margin-right:6px;"></i>Favorites</div>
+      <div class="recent-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>Favorites</div>
       <div class="recent-divider"></div>
     </div>
     <div id="fav-row"></div>
@@ -1050,7 +1064,7 @@
     <div class="search-box">
       <div class="spin-border"></div>
       <input type="text" id="game-search-input" placeholder="Search games..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
     </div>
   </div>
   <div id="category-bar">
@@ -1078,7 +1092,7 @@
     <div class="search-box">
       <div class="spin-border"></div>
       <input type="text" id="proxy-search-input" placeholder="Search proxies..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
     </div>
   </div>
   <div class="proxy-grid" id="proxy-grid"></div>
@@ -1205,17 +1219,17 @@
 <!-- SOUNDBOARD -->
 <section class="page" id="soundboard-page">
   <div id="sb-controls">
-    <button class="sb-ctrl-btn sb-fav" id="sb-fav-btn" title="Favorites"><i class="fa-regular fa-star"></i></button>
-    <button class="sb-ctrl-btn sb-overlap" id="sb-overlap-btn" title="Allow Overlap"><i class="fa-solid fa-volume-xmark"></i></button>
-    <button class="sb-ctrl-btn sb-stop" id="sb-stop-btn" title="Stop All"><i class="fa-solid fa-stop"></i></button>
+    <button class="sb-ctrl-btn sb-fav" id="sb-fav-btn" title="Favorites"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg></button>
+    <button class="sb-ctrl-btn sb-overlap" id="sb-overlap-btn" title="Allow Overlap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" aria-hidden="true"><path d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.7 34.4-5.3zM425 167l55 55 55-55c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-55 55 55 55c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-55-55-55 55c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l55-55-55-55c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"/></svg></button>
+    <button class="sb-ctrl-btn sb-stop" id="sb-stop-btn" title="Stop All"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 128C0 92.7 28.7 64 64 64H384c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg></button>
     <input id="sb-search" type="text" placeholder="Search sounds..." />
-    <button class="sb-ctrl-btn sb-tts-toggle" id="sb-tts-btn" title="Text-to-Speech"><i class="fa-solid fa-microphone"></i></button>
+    <button class="sb-ctrl-btn sb-tts-toggle" id="sb-tts-btn" title="Text-to-Speech"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M176 0C123 0 80 43 80 96V256c0 53 43 96 96 96s96-43 96-96V96c0-53-43-96-96-96zM88 384c-8.8 0-16 7.2-16 16s7.2 16 16 16H96v16c0 61.9 49.4 112.5 111 112.9C222.1 533.6 272 483 272 422.4V416h8c8.8 0 16-7.2 16-16s-7.2-16-16-16H88z"/></svg></button>
   </div>
 
   <div id="tts-panel" class="hidden">
     <div class="tts-hdr" id="tts-hdr">
-      <span class="tts-title"><i class="fa-solid fa-microphone"></i> Text-to-Speech</span>
-      <button class="tts-close" id="tts-close"><i class="fa-solid fa-xmark"></i></button>
+      <span class="tts-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M176 0C123 0 80 43 80 96V256c0 53 43 96 96 96s96-43 96-96V96c0-53-43-96-96-96zM88 384c-8.8 0-16 7.2-16 16s7.2 16 16 16H96v16c0 61.9 49.4 112.5 111 112.9C222.1 533.6 272 483 272 422.4V416h8c8.8 0 16-7.2 16-16s-7.2-16-16-16H88z"/></svg> Text-to-Speech</span>
+      <button class="tts-close" id="tts-close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg></button>
     </div>
     <textarea class="tts-ta" id="tts-ta" placeholder="Type something to speak..."></textarea>
     <div class="tts-grid">
@@ -1240,13 +1254,13 @@
         <select class="tts-sel" id="tts-lang-sel"><option value="">All</option></select>
       </div>
     </div>
-    <div class="tts-status" id="tts-status"><i class="fa-solid fa-check"></i> Ready</div>
+    <div class="tts-status" id="tts-status"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Ready</div>
     <div class="tts-actions">
-      <button class="tts-btn tts-speak"  id="tts-speak-btn" title="Speak"><i class="fa-solid fa-play"></i></button>
-      <button class="tts-btn tts-pause"  id="tts-pause-btn" title="Pause" disabled><i class="fa-solid fa-pause"></i></button>
-      <button class="tts-btn tts-resume" id="tts-resume-btn" title="Resume" disabled><i class="fa-solid fa-circle-play"></i></button>
-      <button class="tts-btn tts-stop"   id="tts-stop-btn2" title="Stop" disabled><i class="fa-solid fa-stop"></i></button>
-      <button class="tts-btn tts-reset"  id="tts-reset-btn" title="Reset"><i class="fa-solid fa-rotate-left"></i></button>
+      <button class="tts-btn tts-speak"  id="tts-speak-btn" title="Speak"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
+      <button class="tts-btn tts-pause"  id="tts-pause-btn" title="Pause" disabled><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg></button>
+      <button class="tts-btn tts-resume" id="tts-resume-btn" title="Resume" disabled><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9V344c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"/></svg></button>
+      <button class="tts-btn tts-stop"   id="tts-stop-btn2" title="Stop" disabled><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 128C0 92.7 28.7 64 64 64H384c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg></button>
+      <button class="tts-btn tts-reset"  id="tts-reset-btn" title="Reset"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 106.6C186.3 20.1 327.4 19.8 415 107s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z"/></svg></button>
     </div>
     <div class="tts-word-wrap hidden" id="tts-word-wrap">
       <span class="tts-word-lbl">Now:</span>
@@ -1455,7 +1469,7 @@
         <span>History</span>
       </div>
       <button id="exodus-new-chat">
-        <i class="fa-solid fa-plus"></i> New Chat
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg> New Chat
       </button>
       <div id="exodus-history"></div>
     </div>
@@ -1463,7 +1477,7 @@
     <!-- Main -->
     <div id="exodus-main">
       <div id="exodus-topbar">
-        <button id="exodus-toggle-sidebar" title="Toggle history"><i class="fa-solid fa-sidebar"></i></button>
+        <button id="exodus-toggle-sidebar" title="Toggle history"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM192 128V384H448c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32H192z"/></svg></button>
         <span id="exodus-model-label">Exodus AI · Llama 3.1 8B</span>
       </div>
 
@@ -1484,13 +1498,13 @@
       <div id="exodus-input-area">
         <div id="exodus-img-preview-wrap">
           <img id="exodus-img-preview" src="" alt="preview" />
-          <button id="exodus-img-clear" title="Remove image"><i class="fa-solid fa-xmark"></i></button>
+          <button id="exodus-img-clear" title="Remove image"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg></button>
         </div>
         <div id="exodus-input-box">
-          <button id="exodus-img-btn" title="Attach image"><i class="fa-solid fa-image"></i></button>
+          <button id="exodus-img-btn" title="Attach image"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"/></svg></button>
           <input type="file" id="exodus-img-input" accept="image/*" />
           <textarea id="gxai-input" rows="1" placeholder="Ask anything" autocomplete="off" spellcheck="false"></textarea>
-          <button id="gxai-send" title="Send"><i class="fa-solid fa-arrow-up"></i></button>
+          <button id="gxai-send" title="Send"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M374.6 73.4c-12.5-12.5-32.8-12.5-45.3 0l-192 192c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L352 141.3V448c0 17.7 14.3 32 32 32s32-14.3 32-32V128c0-.5 0-1.1 0-1.6l5.7 5.7c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-96-96z"/></svg></button>
         </div>
         <p id="exodus-hint">Shift+Enter for new line · Llama 3.1 8B</p>
       </div>
@@ -1575,11 +1589,11 @@
   </style>
   <div id="pyeditor-wrap">
     <div id="pyeditor-toolbar">
-      <span><i class="fa-brands fa-python"></i> PYTHON</span>
-      <button class="py-btn run" id="py-run-btn"><i class="fa-solid fa-play"></i> Run</button>
-      <button class="py-btn" id="py-clear-btn"><i class="fa-solid fa-trash-can"></i> Clear Output</button>
-      <button class="py-btn" id="py-new-btn"><i class="fa-solid fa-file"></i> New</button>
-      <button class="py-btn" id="py-download-btn"><i class="fa-solid fa-download"></i> Save .py</button>
+      <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg> PYTHON</span>
+      <button class="py-btn run" id="py-run-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg> Run</button>
+      <button class="py-btn" id="py-clear-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg> Clear Output</button>
+      <button class="py-btn" id="py-new-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128z"/></svg> New</button>
+      <button class="py-btn" id="py-download-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg> Save .py</button>
       <select id="py-font-size" title="Font size">
         <option value="12">12px</option>
         <option value="14" selected>14px</option>
@@ -1607,7 +1621,7 @@ for i in range(5):
         <div id="py-output"></div>
         <div id="py-input-row" style="display:none;">
           <input id="py-stdin" type="text" placeholder="stdin input..." />
-          <button id="py-stdin-send"><i class="fa-solid fa-arrow-right"></i></button>
+          <button id="py-stdin-send"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></button>
         </div>
       </div>
     </div>
@@ -1635,7 +1649,7 @@ for i in range(5):
   </div>
   <div class="titlebar-right">
     <div class="titlebar-status">
-      <i class="fa-solid fa-wifi titlebar-status-icon"></i>
+      <svg class="titlebar-status-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" aria-hidden="true"><path d="M288 368a48 48 0 1 0-96 0 48 48 0 1 0 96 0zm128-176c-89.5-89.5-234.5-89.5-324 0l-45.3-45.3C160.3 33.5 351.7 33.5 465.3 146.7L416 192zm64-64C381.3 17.3 130.7 17.3 0 148l-45.3-45.3C-30.5-30.5 542.5-30.5 557.3 102.7L480 128zm-256 0c-61.9 0-121.5 23.8-166.6 66.9L112 150.6C164.9 100.3 225.1 80 288 80s123.1 20.3 176 70.6l-45.3 44.3C373.5 151.8 313.9 128 256 128z"/></svg>
       <span class="titlebar-status-text">Connected</span>
     </div>
     <div class="titlebar-date" id="titlebar-date">Jan 1, 2024</div>
@@ -1646,60 +1660,60 @@ for i in range(5):
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
-  <button class="sidebar-btn active" id="sidebar-home" title="Home"><i class="fa-solid fa-house"></i></button>
-  <button class="sidebar-btn" id="sidebar-gxmes" title="Gxmes"><i class="fa-solid fa-gamepad"></i></button>
-  <button class="sidebar-btn" id="sidebar-proxy" title="Proxies"><i class="fa-solid fa-cloud"></i></button>
-  <button class="sidebar-btn" id="sidebar-info" title="Info"><i class="fa-solid fa-address-book"></i></button>
-  <button class="sidebar-btn" id="sidebar-sound" title="Soundboard"><i class="fa-solid fa-volume-high"></i></button>
-  <button class="sidebar-btn" id="sidebar-gxai" title="Exodus AI"><i class="fa-solid fa-robot"></i></button>
-  <button class="sidebar-btn" id="sidebar-pyeditor" title="Python Editor"><i class="fa-brands fa-python"></i></button>
-  <button class="sidebar-btn" id="sidebar-settings" title="Settings"><i class="fa-solid fa-sliders"></i></button>
+  <button class="sidebar-btn active" id="sidebar-home" title="Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4.1-2.8.1-4.2.1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.4 0-2.8 0-4.2-.1c-1.1.1-2.2.1-3.3.1H80c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9.1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg></button>
+  <button class="sidebar-btn" id="sidebar-gxmes" title="Gxmes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M192 64C86 64 0 150 0 256S86 448 192 448H320 448c106 0 192-86 192-192s-86-192-192-192H320 192zM496 168a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm-24 96a24 24 0 1 1 48 0 24 24 0 1 1-48 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg></button>
+  <button class="sidebar-btn" id="sidebar-proxy" title="Proxies"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 336c0 79.5 64.5 144 144 144H432c79.5 0 144-64.5 144-144c0-68.8-48.2-126.6-112.7-141c-.2-2.3-.3-4.7-.3-7c0-79.5-64.5-144-144-144c-46.3 0-87.6 21.8-114.6 56c-9.8-3.2-20.2-5-31-5C76.5 96 0 172.5 0 264c0 27.3 6.4 53 17.8 75.7L0 336z"/></svg></button>
+  <button class="sidebar-btn" id="sidebar-info" title="Info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M96 0C60.7 0 32 28.7 32 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H96zM208 288h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H144c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1-128 0zM512 80c0-8.8 7.2-16 16-16s16 7.2 16 16v64c0 8.8-7.2 16-16 16s-16-7.2-16-16V80zM528 208c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16s-16-7.2-16-16V224c0-8.8 7.2-16 16-16zm16 160c0 8.8-7.2 16-16 16s-16-7.2-16-16v-16 16c0 8.8 7.2 16 16 16zM544 368v64c0 8.8-7.2 16-16 16s-16-7.2-16-16V368c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></button>
+  <button class="sidebar-btn" id="sidebar-sound" title="Soundboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M533.6 32.5C598.5 85.2 640 165.8 640 256s-41.5 170.7-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 330.9 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C495.3 341.3 512 301.1 512 256s-16.7-85.3-39.2-102.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.7 34.4-5.3z"/></svg></button>
+  <button class="sidebar-btn" id="sidebar-gxai" title="Exodus AI"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg></button>
+  <button class="sidebar-btn" id="sidebar-pyeditor" title="Python Editor"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg></button>
+  <button class="sidebar-btn" id="sidebar-settings" title="Settings"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1-64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1-64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 64 0 32 32 0 1 1-64 0zm73.3-48C253 51.7 224.8 32 192 32s-61 19.7-73.3 48L32 80C14.3 80 0 94.3 0 112s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 144c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 80z"/></svg></button>
 </aside>
 
 <!-- STATUS BAR -->
 <footer class="status-bar">
   <div class="status-left">
-    <div class="status-item"><i class="fa-solid fa-folder"></i><span id="status-path">/home</span></div>
-    <div class="status-item"><i class="fa-solid fa-database"></i><span id="status-items">0 items</span></div>
+    <div class="status-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em"><path d="M64 480H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H288c-10.1 0-19.6-4.7-25.6-12.8L243.2 57.6C231.1 41.5 212.1 32 192 32H64C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64z"/></svg><span id="status-path">/home</span></div>
+    <div class="status-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em"><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg><span id="status-items">0 items</span></div>
   </div>
   <div class="status-right">
-    <div class="status-item" id="status-battery-wrap" style="display:none;"><i class="fa-solid fa-battery-full" id="status-battery-icon"></i><span id="status-battery">--%</span></div>
-    <div class="status-item"><i class="fa-solid fa-palette"></i><span id="status-accent">#5b9cf6</span></div>
-    <div class="status-item"><i class="fa-solid fa-code-branch"></i><span id="status-version">v2.0</span></div>
+    <div class="status-item" id="status-battery-wrap" style="display:none;"><span id="status-battery-icon"></span><span id="status-battery">--%</span></div>
+    <div class="status-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 256C0 114.6 114.6 0 256 0s256 114.6 256 256c0 20.2-5.1 39.2-14 55.9c-5.9 11.1-14.2 20.5-24.4 27.5L448 352H256c-17.7 0-32 14.3-32 32v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V384c0-35.3 28.7-64 64-64H413.5l6.5-4.1C424.1 312.6 432 285.2 432 256c0-97.2-78.8-176-176-176S80 158.8 80 256v48H32V256zM128 216a40 40 0 1 1 80 0 40 40 0 1 1-80 0zm232-40a40 40 0 1 1 0 80 40 40 0 1 1 0-80zm-88 120a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg><span id="status-accent">#5b9cf6</span></div>
+    <div class="status-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M80 104a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm80-24c0 32.8-19.7 61-48 73.3V192c0 17.7 14.3 32 32 32H304c17.7 0 32-14.3 32-32V153.3C307.7 141 288 112.8 288 80c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V192c0 53-43 96-96 96H256v70.7c28.3 12.3 48 40.5 48 73.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-32.8 19.7-61 48-73.3V288H144c-53 0-96-43-96-96V153.3C19.7 141 0 112.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80zm208-24a24 24 0 1 0 0-48 24 24 0 1 0 0 48zM256 432a24 24 0 1 0-48 0 24 24 0 1 0 48 0z"/></svg><span id="status-version">v2.0</span></div>
   </div>
 </footer>
 
 <!-- OLD NAV (preserved for JS compatibility) -->
 <nav class="nav" id="main-nav" style="display:none;">
-  <button class="nav-btn" id="btn-home" title="Home"><i class="fa-solid fa-house"></i></button>
+  <button class="nav-btn" id="btn-home" title="Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4.1-2.8.1-4.2.1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.4 0-2.8 0-4.2-.1c-1.1.1-2.2.1-3.3.1H80c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9.1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg></button>
   <div class="nav-sep"></div>
-  <button class="nav-btn" id="btn-gxmes" title="Gxmes"><i class="fa-solid fa-gamepad"></i></button>
-  <button class="nav-btn" id="btn-proxy" title="Proxies"><i class="fa-solid fa-cloud"></i></button>
+  <button class="nav-btn" id="btn-gxmes" title="Gxmes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M192 64C86 64 0 150 0 256S86 448 192 448H320 448c106 0 192-86 192-192s-86-192-192-192H320 192zM496 168a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm-24 96a24 24 0 1 1 48 0 24 24 0 1 1-48 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg></button>
+  <button class="nav-btn" id="btn-proxy" title="Proxies"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 336c0 79.5 64.5 144 144 144H432c79.5 0 144-64.5 144-144c0-68.8-48.2-126.6-112.7-141c-.2-2.3-.3-4.7-.3-7c0-79.5-64.5-144-144-144c-46.3 0-87.6 21.8-114.6 56c-9.8-3.2-20.2-5-31-5C76.5 96 0 172.5 0 264c0 27.3 6.4 53 17.8 75.7L0 336z"/></svg></button>
   <div class="nav-sep"></div>
-  <button class="nav-btn" id="btn-info" title="Info"><i class="fa-solid fa-address-book"></i></button>
-  <button class="nav-btn" id="btn-sound" title="Soundboard"><i class="fa-solid fa-volume-high"></i></button>
-  <button class="nav-btn" id="btn-gxai" title="Exodus AI"><i class="fa-solid fa-robot"></i></button>
-  <button class="nav-btn" id="btn-settings" title="Settings"><i class="fa-solid fa-sliders"></i></button>
+  <button class="nav-btn" id="btn-info" title="Info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M96 0C60.7 0 32 28.7 32 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H96zM208 288h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H144c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1-128 0zM512 80c0-8.8 7.2-16 16-16s16 7.2 16 16v64c0 8.8-7.2 16-16 16s-16-7.2-16-16V80zM528 208c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16s-16-7.2-16-16V224c0-8.8 7.2-16 16-16zm16 160c0 8.8-7.2 16-16 16s-16-7.2-16-16v-16 16c0 8.8 7.2 16 16 16zM544 368v64c0 8.8-7.2 16-16 16s-16-7.2-16-16V368c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></button>
+  <button class="nav-btn" id="btn-sound" title="Soundboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M533.6 32.5C598.5 85.2 640 165.8 640 256s-41.5 170.7-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 330.9 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C495.3 341.3 512 301.1 512 256s-16.7-85.3-39.2-102.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.7 34.4-5.3z"/></svg></button>
+  <button class="nav-btn" id="btn-gxai" title="Exodus AI"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg></button>
+  <button class="nav-btn" id="btn-settings" title="Settings"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1-64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1-64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 64 0 32 32 0 1 1-64 0zm73.3-48C253 51.7 224.8 32 192 32s-61 19.7-73.3 48L32 80C14.3 80 0 94.3 0 112s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 144c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 80z"/></svg></button>
   <div class="nav-sep"></div>
   <div class="nav-widgets" aria-label="Date and time">
-    <div class="nav-widget" title="Date"><i class="fa-solid fa-calendar-days"></i><span id="nav-date">00/00/00</span></div>
-    <div class="nav-widget" title="Time"><i class="fa-solid fa-clock"></i><span id="nav-time">00:00:00</span></div>
+    <div class="nav-widget" title="Date"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg><span id="nav-date">00/00/00</span></div>
+    <div class="nav-widget" title="Time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.5 33.3-6.5s4.5-25.9-6.5-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg><span id="nav-time">00:00:00</span></div>
   </div>
 </nav>
 
 <div id="notif-container"></div>
 
 <div id="ctx-menu" class="ctx-menu">
-  <button class="ctx-item" id="ctx-settings"><i class="fa-solid fa-sliders"></i> Settings</button>
-  <button class="ctx-item" id="ctx-shortcuts"><i class="fa-solid fa-keyboard"></i> Shortcuts</button>
-  <button class="ctx-item" id="ctx-refresh"><i class="fa-solid fa-rotate-right"></i> Refresh</button>
+  <button class="ctx-item" id="ctx-settings"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1-64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1-64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 64 0 32 32 0 1 1-64 0zm73.3-48C253 51.7 224.8 32 192 32s-61 19.7-73.3 48L32 80C14.3 80 0 94.3 0 112s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 144c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 80z"/></svg> Settings</button>
+  <button class="ctx-item" id="ctx-shortcuts"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zm64 0v64h64V96H64zm384 0H192v64H448V96zM64 224v64h64V224H64zm192 0H192v64h64V224zm64 0v64h64V224H320zm128 0h-32v64h32V224zM192 352v-64H128v64h64zm64 0h64V288H256v64zm192 0V288H320v64H448z"/></svg> Shortcuts</button>
+  <button class="ctx-item" id="ctx-refresh"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 106.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg> Refresh</button>
 </div>
 
 <div id="shortcuts-panel">
   <div id="shortcuts-inner">
     <div id="shortcuts-header">
       <span>Keyboard Shortcuts</span>
-      <button id="shortcuts-close"><i class="fa-solid fa-xmark"></i></button>
+      <button id="shortcuts-close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg></button>
     </div>
     <div id="shortcuts-grid">
       <div class="shortcut-group">
@@ -1736,9 +1750,9 @@ for i in range(5):
 <div id="game-overlay">
   <div id="game-frame-container"></div>
   <div class="game-controls">
-    <button id="btn-fullscreen" title="Fullscreen"><i class="fa-solid fa-expand"></i></button>
-    <button id="btn-download" title="Download"><i class="fa-solid fa-download"></i></button>
-    <button id="btn-exit" title="Exit"><i class="fa-solid fa-xmark"></i></button>
+    <button id="btn-fullscreen" title="Fullscreen"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"/></svg></button>
+    <button id="btn-download" title="Download"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg></button>
+    <button id="btn-exit" title="Exit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg></button>
   </div>
 </div>
 
@@ -2193,7 +2207,7 @@ dedupedGames.sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric:
 const proxyList = [
   {
     title: "Fern",
-    icon: "fa-solid fa-leaf",
+    icon: "leaf",
     desc: "A lightweight proxy for browsing the web.",
     tag: "Proxy · Browser",
     image: "https://cdn.jsdelivr.net/gh/Kingtian20/gxmes-gx@main/pxy/fern/fern.png",
@@ -2202,7 +2216,7 @@ const proxyList = [
   },
   {
     title: "GN-Math",
-    icon: "fa-solid fa-calculator",
+    icon: "calculator",
     desc: "A proxy disguised as a math tool.",
     tag: "Proxy · Browser",
     image: "https://cdn.jsdelivr.net/gh/Kingtian20/gxmes-gx@main/pxy/gn-math/gn-math.png",
@@ -2211,7 +2225,7 @@ const proxyList = [
   },
   {
     title: "DogeUB",
-    icon: "fa-solid fa-dog",
+    icon: "dog",
     desc: "A proxy browser with a doge theme.",
     tag: "Proxy · Browser",
     image: "https://cdn.jsdelivr.net/gh/Kingtian20/gxmes-gx@main/pxy/dogeub/dogeub.png",
@@ -2813,9 +2827,9 @@ function renderFavs() {
     const chip = document.createElement("div");
     chip.className = "fav-chip";
     chip.innerHTML = `
-      <i class="fa-solid fa-star"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
       <span class="fav-chip-name">${game.title}</span>
-      <span class="fav-chip-del" title="Remove"><i class="fa-solid fa-xmark"></i></span>`;
+      <span class="fav-chip-del" title="Remove"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg></span>`;
     chip.addEventListener("click", e => {
       if (e.target.closest(".fav-chip-del")) {
         toggleFav(game);
@@ -2925,7 +2939,7 @@ function notify(title, message, icon = "fa-circle-info") {
   const container = document.getElementById("notif-container");
   const el = document.createElement("div");
   el.className = "notif";
-  el.innerHTML = `<i class="fa-solid ${icon} notif-icon"></i><div class="notif-text"><strong>${title}</strong>${message}</div>`;
+  el.innerHTML = `<span class="notif-icon" style="font-size:0.8rem;color:var(--accent);flex-shrink:0">●</span><div class="notif-text"><strong>${title}</strong>${message}</div>`;
   container.appendChild(el);
   const timer = setTimeout(() => dismissNotif(el), 3500);
   el.addEventListener("click", () => { clearTimeout(timer); dismissNotif(el); });
@@ -2989,13 +3003,19 @@ async function initBattery() {
   const icon = document.getElementById("status-battery-icon");
   const icons = ["fa-battery-empty","fa-battery-quarter","fa-battery-half","fa-battery-three-quarters","fa-battery-full"];
 
+  const battSVGs = {
+    0: "M0 176c0-44.2 35.8-80 80-80H368c44.2 0 80 35.8 80 80v16h16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H448v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176zm80-16c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H368c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80z",
+    1: "M0 176c0-44.2 35.8-80 80-80H368c44.2 0 80 35.8 80 80v16h16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H448v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176zm80-16c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H368c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80zm0 48h64V304H96V208z",
+    2: "M0 176c0-44.2 35.8-80 80-80H368c44.2 0 80 35.8 80 80v16h16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H448v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176zm80-16c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H368c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80zm0 48h128V304H96V208z",
+    3: "M0 176c0-44.2 35.8-80 80-80H368c44.2 0 80 35.8 80 80v16h16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H448v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176zm80-16c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H368c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80zm0 48h224V304H96V208z",
+    4: "M0 176c0-44.2 35.8-80 80-80H368c44.2 0 80 35.8 80 80v16h16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H448v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176zm80-16c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H368c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80zm0 48h256V304H96V208z",
+  };
   function updateBattery() {
     const pct = Math.round(battery.level * 100);
     text.textContent = pct + "%";
     const idx = Math.min(Math.floor(battery.level * 5), 4);
-    icon.className = `fa-solid ${icons[idx]}`;
-    if (pct <= 20 && !battery.charging) icon.style.color = "#ef4444";
-    else icon.style.color = "";
+    icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" style="width:1.2em;height:1em"><path d="' + battSVGs[idx] + '"/></svg>';
+    icon.style.color = (pct <= 20 && !battery.charging) ? "#ef4444" : "";
   }
   updateBattery();
   battery.addEventListener("levelchange", updateBattery);
@@ -3114,7 +3134,7 @@ function getFilteredGames() {
 function renderGames(list) {
   gameGrid.innerHTML = "";
   if (!list.length) {
-    gameGrid.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><p>No games found</p></div>`;
+    gameGrid.innerHTML = `<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg><p>No games found</p></div>`;
     return;
   }
   list.forEach(game => {
@@ -3124,15 +3144,15 @@ function renderGames(list) {
       card.innerHTML = `<img src="${game.image}" alt="${game.title}" loading="lazy"><div class="card-footer"><span class="card-name">${game.title}</span><span class="card-genre">${game.cat ? game.cat.charAt(0).toUpperCase() + game.cat.slice(1) : "Game"}</span></div>`;
       card.querySelector("img").addEventListener("error", () => {
         card.className = "card no-img pop";
-        card.innerHTML = `<i class="fa-solid fa-gamepad card-icon"></i><div class="card-label"><span>${game.title}</span></div>`;
+        card.innerHTML = `<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M192 64C86 64 0 150 0 256S86 448 192 448H320 448c106 0 192-86 192-192s-86-192-192-192H320 192zM496 168a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm-24 96a24 24 0 1 1 48 0 24 24 0 1 1-48 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg><div class="card-label"><span>${game.title}</span></div>`;
       }, { once: true });
     } else {
       card.className = "card no-img pop";
-      card.innerHTML = `<i class="fa-solid fa-gamepad card-icon"></i><div class="card-label"><span>${game.title}</span></div>`;
+      card.innerHTML = `<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M192 64C86 64 0 150 0 256S86 448 192 448H320 448c106 0 192-86 192-192s-86-192-192-192H320 192zM496 168a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm-24 96a24 24 0 1 1 48 0 24 24 0 1 1-48 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg><div class="card-label"><span>${game.title}</span></div>`;
     }
     const favBtn = document.createElement("button");
     favBtn.className = "fav-btn" + (getFavs().some(f => f.title === game.title) ? " active" : "");
-    favBtn.innerHTML = '<i class="fa-solid fa-star"></i>';
+    favBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>';
     favBtn.title = "Favorite";
     favBtn.addEventListener("click", e => {
       e.stopPropagation();
@@ -3176,7 +3196,7 @@ const proxyGrid = document.getElementById("proxy-grid");
 function renderProxies(list) {
   proxyGrid.innerHTML = "";
   if (!list.length) {
-    proxyGrid.innerHTML = `<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i><p>No proxies found</p></div>`;
+    proxyGrid.innerHTML = `<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg><p>No proxies found</p></div>`;
     return;
   }
   list.forEach(proxy => {
@@ -3189,7 +3209,9 @@ function renderProxies(list) {
       card.querySelector("img").addEventListener("error", () => {
         card.className = "card no-img pop";
         card.style.cssText = "aspect-ratio:16/9;";
-        card.innerHTML = `<i class="${proxy.icon} card-icon"></i><div class="card-label"><span>${proxy.title}</span></div>`;
+        const svgPaths = { leaf: "M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16H288 216c-83.9 0-152 68.1-152 152 0 15 2.1 29.4 6.1 43.1C107 449.3 142.5 464 180 464H350.6C249.2 464 167.4 379.8 160 275.7V272c0-12.8 1.3-25.2 3.7-37.3C182.5 169.4 222.2 128 272 128h16c17.7 0 32 14.3 32 32s-14.3 32-32 32H272c-53 0-96 43-96 96v48c0 53 43 96 96 96h80c53 0 96-43 96-96V288c0-106-86-192-192-192H272z", calculator: "M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zm48 96h160c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H112c-17.7 0-32-14.3-32-32V128c0-17.7 14.3-32 32-32zM80 320a32 32 0 1 1 64 0 32 32 0 1 1-64 0zm128 0a32 32 0 1 1 64 0 32 32 0 1 1-64 0zm96 32a32 32 0 1 1 0-64 32 32 0 1 1 0 64zM80 416a32 32 0 1 1 64 0 32 32 0 1 1-64 0zm96 32a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm128-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z", dog: "M320 0c17.7 0 32 14.3 32 32V96h64c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H384v32c0 5.9-.8 11.6-2.4 17.1C402.7 280.6 416 306.8 416 336v96H320V368c0-26.5-21.5-48-48-48H192c-26.5 0-48 21.5-48 48v64H48V336c0-29.2 13.3-55.4 34.4-72.9C80.8 257.6 80 251.9 80 246.1V224c0-17.7 14.3-32 32-32v-32c0-17.7 14.3-32 32-32H288V32c0-17.7 14.3-32 32-32zM160 200a40 40 0 1 0 80 0 40 40 0 1 0-80 0z" };
+        const svgPath = svgPaths[proxy.icon] || svgPaths["leaf"];
+        card.innerHTML = `<svg class="card-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"><path d="${svgPath}"/></svg><div class="card-label"><span>${proxy.title}</span></div>`;
       }, { once: true });
     }
     card.addEventListener("click", () => openGame(proxy));
@@ -3237,10 +3259,17 @@ function renderRecent() {
     if (game.image) {
       chip.innerHTML = `<img src="${game.image}" alt="${game.title}"><span>${game.title}</span>`;
       chip.querySelector("img").addEventListener("error", function() {
-        this.replaceWith(Object.assign(document.createElement("i"), { className: "fa-solid fa-gamepad" }));
+        (() => {
+        const s = document.createElementNS("http://www.w3.org/2000/svg","svg");
+        s.setAttribute("viewBox","0 0 640 512"); s.setAttribute("fill","currentColor");
+        s.style.cssText="width:2rem;height:2rem;opacity:0.3";
+        const p = document.createElementNS("http://www.w3.org/2000/svg","path");
+        p.setAttribute("d","M192 64C86 64 0 150 0 256S86 448 192 448H320 448c106 0 192-86 192-192s-86-192-192-192H320 192zM496 168a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm-24 96a24 24 0 1 1 48 0 24 24 0 1 1-48 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z");
+        s.appendChild(p); this.replaceWith(s);
+      })()
       }, { once: true });
     } else {
-      chip.innerHTML = `<i class="fa-solid fa-gamepad"></i><span>${game.title}</span>`;
+      chip.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M192 64C86 64 0 150 0 256S86 448 192 448H320 448c106 0 192-86 192-192s-86-192-192-192H320 192zM496 168a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm-24 96a24 24 0 1 1 48 0 24 24 0 1 1-48 0zM168 200c0-13.3 10.7-24 24-24s24 10.7 24 24v32h32c13.3 0 24 10.7 24 24s-10.7 24-24 24H216v32c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h32V200z"/></svg><span>${game.title}</span>`;
     }
     chip.addEventListener("click", () => openGame(game));
     row.appendChild(chip);
@@ -12436,7 +12465,7 @@ document.getElementById("btn-download").addEventListener("click", async () => {
         const isFav = favs.includes(sound.name);
         const favItem = document.createElement("button");
         favItem.style.cssText = "padding:8px 12px;background:rgba(8,20,32,0.8);border:1px solid #1e4a65;border-radius:8px;color:#e0f4ff;font-size:0.82rem;cursor:pointer;text-align:left;";
-        favItem.innerHTML = isFav ? '<i class="fa-solid fa-star"></i> Unfavorite' : '<i class="fa-regular fa-star"></i> Favorite';
+        favItem.innerHTML = isFav ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg> Unfavorite' : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg> Favorite';
         favItem.onclick = () => {
           const f = getFavs();
           const idx = f.indexOf(sound.name);
@@ -12465,14 +12494,18 @@ document.getElementById("btn-download").addEventListener("click", async () => {
   favBtn.addEventListener("click", () => {
     showFavs = !showFavs;
     favBtn.classList.toggle("on", showFavs);
-    favBtn.querySelector("i").className = showFavs ? "fa-solid fa-star" : "fa-regular fa-star";
+    favBtn.querySelector("svg path").setAttribute("d", showFavs
+        ? "M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+        : "M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.8 19.3 16.5s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.7 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-15.1 19.3-16.5l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0z");
     renderBoard(searchEl.value);
   });
 
   overlapBtn.addEventListener("click", () => {
     allowOverlap = !allowOverlap;
     overlapBtn.classList.toggle("on", allowOverlap);
-    overlapBtn.querySelector("i").className = allowOverlap ? "fa-solid fa-volume-high" : "fa-solid fa-volume-xmark";
+    overlapBtn.querySelector("svg path").setAttribute("d", allowOverlap
+        ? "M533.6 32.5C598.5 85.2 640 165.8 640 256s-41.5 170.7-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 330.9 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C495.3 341.3 512 301.1 512 256s-16.7-85.3-39.2-102.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.7 34.4-5.3z"
+        : "M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.7 34.4-5.3zM425 167l55 55 55-55c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-55 55 55 55c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-55-55-55 55c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l55-55-55-55c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z");
   });
 
   stopAllBtn.addEventListener("click", () => {
@@ -12578,7 +12611,7 @@ document.getElementById("btn-download").addEventListener("click", async () => {
 
   speakBtn.addEventListener("click", () => {
     const text = ttsTA.value.trim();
-    if (!text) { setStatus('<i class="fa-solid fa-triangle-exclamation"></i> Enter some text first.', "paused"); return; }
+    if (!text) { setStatus('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0-64 0 32 32 0 1 0 64 0z"/></svg> Enter some text first.', "paused"); return; }
     synth.cancel();
 
     const u = new SpeechSynthesisUtterance(text);
@@ -12588,7 +12621,7 @@ document.getElementById("btn-download").addEventListener("click", async () => {
     u.pitch  = parseFloat(pitchSlider.value);
 
     u.onstart = () => {
-      setStatus('<i class="fa-solid fa-volume-high"></i> Speaking', "speaking");
+      setStatus('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M533.6 32.5C598.5 85.2 640 165.8 640 256s-41.5 170.7-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 330.9 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C495.3 341.3 512 301.1 512 256s-16.7-85.3-39.2-102.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.7 34.4-5.3z"/></svg> Speaking', "speaking");
       setBtns(true); wordWrap.classList.remove("hidden");
     };
     u.onboundary = e => {
@@ -12598,13 +12631,13 @@ document.getElementById("btn-download").addEventListener("click", async () => {
       }
     };
     u.onpause  = () => setStatus("⏸ Paused", "paused");
-    u.onresume = () => setStatus('<i class="fa-solid fa-volume-high"></i> Resumed', "speaking");
+    u.onresume = () => setStatus('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M533.6 32.5C598.5 85.2 640 165.8 640 256s-41.5 170.7-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 330.9 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C495.3 341.3 512 301.1 512 256s-16.7-85.3-39.2-102.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.7 34.4-5.3z"/></svg> Resumed', "speaking");
     u.onend    = () => {
-      setStatus('<i class="fa-solid fa-circle-check"></i> Done', "done");
+      setStatus('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg> Done', "done");
       setBtns(false); wordWrap.classList.add("hidden"); curWord.textContent = "";
     };
     u.onerror  = e => {
-      setStatus(`<i class="fa-solid fa-circle-exclamation"></i> Error: ${e.error}`, "error");
+      setStatus(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm-32 224a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"/></svg> Error: ${e.error}`, "error");
       setBtns(false); wordWrap.classList.add("hidden");
     };
 
@@ -12615,14 +12648,14 @@ document.getElementById("btn-download").addEventListener("click", async () => {
   resumeBtn.addEventListener("click", () => { if (synth.paused) synth.resume(); pauseBtn.disabled=false; resumeBtn.disabled=true; });
   stopBtn2.addEventListener("click",  () => {
     synth.cancel(); setBtns(false); wordWrap.classList.add("hidden"); curWord.textContent = "";
-    setStatus('<i class="fa-solid fa-stop"></i> Stopped', "");
+    setStatus('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 128C0 92.7 28.7 64 64 64H384c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg> Stopped', "");
   });
   resetBtn.addEventListener("click",  () => {
     volSlider.value="1"; volVal.textContent="1.00";
     rateSlider.value="1"; rateVal.textContent="1.0";
     pitchSlider.value="1"; pitchVal.textContent="1.00";
     langSel.value=""; populateVoices("");
-    setStatus('<i class="fa-solid fa-arrow-rotate-left"></i> Reset', "");
+    setStatus('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em"><path d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 106.6C186.3 20.1 327.4 19.8 415 107s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z"/></svg> Reset', "");
   });
 })();
 
@@ -12664,9 +12697,9 @@ function renderHistory() {
     item.className = "exodus-hist-item" + (currentSession?.id === s.id ? " active" : "");
     const del = document.createElement("button");
     del.className = "exodus-hist-del";
-    del.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    del.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>';
     del.onclick = e => { e.stopPropagation(); sessions = sessions.filter(x => x.id !== s.id); saveSessions(); if (currentSession?.id === s.id) { currentSession = null; if (sessions.length) loadSession(sessions[0].id); else newSession(); } else renderHistory(); };
-    item.innerHTML = `<i class="fa-regular fa-message"></i><span style="flex:1;overflow:hidden;text-overflow:ellipsis">${s.title}</span>`;
+    item.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L185.6 508.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.4-8.8-14.3V416H64c-35.3 0-64-28.7-64-64V64z"/></svg><span style="flex:1;overflow:hidden;text-overflow:ellipsis">${s.title}</span>`;
     item.appendChild(del);
     item.addEventListener("click", () => loadSession(s.id));
     hist.appendChild(item);
